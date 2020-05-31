@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .war{
+            width: 300px;
+            height: 300px;
+            background-color: deepskyblue;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <button @click="fun1">按钮1</button>
+        <button v-on:click="fun2">按钮2</button>
+        <button @click="fun3">按钮3</button>
+        <button @click="fun4('你好',$event)">按钮4</button>
+        <div class="war" @click="fun5">
+            <div class="box" @click.stop="fun6"></div>
+        </div>
+        <a href="https://www.baidu.com" @click.prevent="fun7">百度</a><br>
+        <input type="text" @keyup.enter="fun8">
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el : "#root",
+            data :{
+
+            },
+            methods: {
+                fun1(){
+                    console.log("我是按钮1");
+                },
+                fun2(){
+                    console.log("我是按钮2");
+                },
+                fun3(e){
+                    console.log(e.target.innerText);
+                },
+                fun4(str,e){
+                    console.log(str,e.target.innerText);
+                },
+                fun5(){
+                    console.log("我的按钮5");
+                },
+                fun6(){
+                    console.log("我是按钮6");
+                },
+                fun7(){
+                    console.log("我是按钮7");
+                },
+                fun8(){
+                    console.log("按下回车")
+                }
+            },
+        })
+    </script>
+</body>
+</html>

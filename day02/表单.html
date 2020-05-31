@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css'
+        integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u' crossorigin='anonymous'>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1"> 账号 </label>
+                        <input v-model="userInfo.account" type="text" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">密码</label>
+                        <input v-model="userInfo.password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="打代码" v-model="userInfo.hobi">
+                            打代码
+                        </label>
+                        <label>
+                            <input type="checkbox" value="唱歌" v-model="userInfo.hobi">
+                            唱歌
+                        </label>
+                        <label>
+                            <input type="checkbox" value="旅游" v-model="userInfo.hobi">
+                            旅游
+                        </label>
+                        <label>
+                            <input type="checkbox" value="运动" v-model="userInfo.hobi">
+                            运动
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label>
+                            <input v-model="userInfo.sex" value="女" type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            女
+                        </label>
+                        <label>
+                            <input v-model="userInfo.sex" value="男" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            男
+                        </label>
+                    </div>
+                    <select class="form-control input-lg" v-model="userInfo.choose">
+                        <option v-for="(city, index) in chooses" :key="city.id" :value="city.value">
+                            {{city.value}}
+                        </option>
+                    </select>
+                    <br>
+                    <button type="submit" class="btn btn-default" @click.prevent="dabao" >提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="./js/vue.js"></script>
+    <script>
+        new Vue({
+            el:".container",
+            data() {
+                return {
+                    userInfo:{
+                        account : "",
+                        password : "",
+                        hobi : [],
+                        sex : "",
+                        choose : ""
+                    },
+                    chooses:[
+                        {id:1,value:"北京"},
+                        {id:2,value:"上海"},
+                        {id:3,value:"广东"},
+                        {id:4,value:"深圳"}
+                    ]
+                }
+            },
+            methods: {
+                dabao(){
+                    console.log(this.userInfo);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

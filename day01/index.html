@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .css1{
+            background-color: #bfa;
+        }
+        .css2{
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div id="root">
+        <span>{{fullName1}}</span><br>
+        <input type="text" v-model="firstName"><br>
+        <input type="text" v-model="lastName"><br>
+        <input type="text" :value="fullName1"><br>
+        <input type="text" v-model="fullName2"><br>
+        <p v-if="cssDisplay" :class="myCss"> block </p>
+        <p v-else :class="{css1:isA,css2:isB}"> none</p>
+        <button @click="change"  >切换</button>
+        <li v-for="(person, index) in persons" :key="person.id">
+            {{person.id}} --- {{person.name}} --- {{person.age}}
+        </li>
+    </div>
+    
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script>
+        new Vue({
+            el : "#root",
+            data :{
+                firstName : "Tank",
+                lastName : "MrOne",
+                cssDisplay : true,
+                myCss:"css1",
+                isB:true,
+                persons:[
+                    {id:1,name:'周星驰',age:11},
+                    {id:2,name:'吴孟达',age:22},
+                    {id:3,name:"潘长江",age:33},
+                    {id:4,name:'刘德华',age:44},
+                ]
+            },
+            computed :{
+                fullName1(){
+                    return this.firstName + "-" + this.lastName;
+                },
+                fullName2:{
+                    get(){
+                        return this.firstName + "-" + this.lastName;  
+                    },
+                    set(value){
+                        let arr = value.split('-');
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                    }
+                }
+            },
+            methods: {
+                change(){
+                    this.cssDisplay = !this.cssDisplay
+                }
+            }
+        })
+    </script>
+</body>
+</html>

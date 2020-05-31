@@ -1,0 +1,26 @@
+
+.center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.warpper{
+    width: 800px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0, 0.5);
+}
+.btn-lg{
+    min-width: 88px;
+}
+/* .index{
+    display: nonbloe;
+} */
+/* .toAddCourse{ */
+    /* visibility: hidden; */
+/* } */
+.chooseTs,.chooseSt,.warpper-back,.addCourseInput{
+    /* display: none; */
+}
